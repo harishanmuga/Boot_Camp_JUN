@@ -10,6 +10,7 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -22,25 +23,27 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import selenium.base.methods.BaseSeleniumMethods;
 import utils.ReadExcel;
 
-public class BaseClass {
+public class BaseClass extends BaseSeleniumMethods {
 
-	public WebDriver driver;
+	
 	public String excelFilename;
 	public static WebDriverWait wait;
 	public static JavascriptExecutor js;
 	public static Properties prop;
 	public static Actions builder;
-	public static String parentWindow;
 	
 	
 	@BeforeMethod
 	public void preCondition() throws IOException {
 		
 		FileInputStream fis = new FileInputStream("./src/main/resources/files.properties");
+		FileInputStream locaters = new FileInputStream("./src/main/resources/locaters.properties");
 		prop = new Properties();
 		prop.load(fis);
+		prop.load(locaters);
 		WebDriverManager.chromedriver().setup();
 		ChromeOptions option = new ChromeOptions();
 		option.addArguments("--disable-notifications");
@@ -56,28 +59,11 @@ public class BaseClass {
 
 	}
 	
-	@DataProvider
+	@DataProvider(indices=0)
 	public String[][] sendData() throws IOException {
 		
 		ReadExcel re = new ReadExcel();
 		return re.excelRead(excelFilename);
-
-	}
-	
-	
-	  public void switchToLatestWindow() {
-	  
-	  Set<String> windowHandles = driver.getWindowHandles(); List<String>
-	  listwindowHandles = new ArrayList<String>(windowHandles);
-	  
-	  driver.switchTo().window(listwindowHandles.get(listwindowHandles.size()-1));
-	  
-	  }
-	 
-	
-	public void switchToParentWindow() {
-		
-		driver.switchTo().window(parentWindow);
 
 	}
 	
