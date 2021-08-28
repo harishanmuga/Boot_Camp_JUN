@@ -57,6 +57,21 @@ public class IndividualsPage extends BaseClass {
 
 	}
 	
+	public IndividualsPage selectSalutaion() {
+		
+		clickElement(driver.findElement(By.xpath("(//a[text()='--None--'])[1]")));
+		clickElement(driver.findElement(By.xpath("//a[@title='Mr.']")));
+		return this;
+
+	}
+	
+	public IndividualsPage enterFirstname() {
+		
+		typeText(driver.findElement(By.xpath("//input[contains(@class,'firstName')]")), "Hari");
+		return this;
+
+	}
+	
 	public IndividualsPage enterLastname(String lName) {
 		
 		driver.findElement(By.xpath(prop.getProperty("IndividualsPage.lastNameTextBox.xpath"))).sendKeys(lName);
@@ -91,6 +106,17 @@ public class IndividualsPage extends BaseClass {
 		}else {
 			System.out.println("Edited successfully.");
 			
+		}
+
+	}
+	
+	public void VerifyBlockMessage() {
+		
+		boolean displayed = driver.findElement(By.xpath("//li[text()='These required fields must be completed: Last Name']")).isDisplayed();
+		if(!displayed) {
+			System.out.println("Saleforce is not blocked to create individual without mandatory fields.");
+		} else {
+			System.out.println("Saleforce is blocked to create individual without mandatory fields.");
 		}
 
 	}
