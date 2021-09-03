@@ -31,7 +31,6 @@ public class BaseClass extends BaseSeleniumMethods {
 	
 	public String excelFilename;
 	public static WebDriverWait wait;
-	public static JavascriptExecutor js;
 	public static Properties prop;
 	public static Actions builder;
 	
