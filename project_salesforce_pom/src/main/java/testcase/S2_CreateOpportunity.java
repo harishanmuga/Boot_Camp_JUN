@@ -1,5 +1,7 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -16,7 +18,7 @@ public class S2_CreateOpportunity extends BaseClass {
 	}
 	
 	@Test(dataProvider = "sendData")
-	public void createOpportunity(String app, String name, String date, String stage) throws InterruptedException {
+	public void createOpportunity(String app, String name, String date, String stage) throws InterruptedException, IOException {
 		
 		new LoginPage(driver).enterUsername().enterPassword().clickLogin()
 		.clickAppLauncher()

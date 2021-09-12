@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -60,8 +62,8 @@ public class OpportunityPage extends BaseClass {
 
 	}
 
-	public OpportunityPage chooseCloseDate(String date) {
-
+	public OpportunityPage chooseCloseDate(String date) throws InterruptedException {
+		Thread.sleep(2000);
 		driver.findElement(By.xpath(prop.getProperty("OpportunityPage.closeDate.xpath"))).click();
 		driver.findElement(By.xpath("//span[text()='" + date + "']")).click();
 		return this;
@@ -172,6 +174,19 @@ public class OpportunityPage extends BaseClass {
 			System.out.println("Not deleted");
 		}
 		
+
+	}
+	
+	// display error message when unabale to create new opportunity
+	public void displayErrorMessage() throws InterruptedException {
+		driver.findElement(By.xpath("//button[text()='Save']")).click();
+		Thread.sleep(5000);
+		WebElement errorTitle = driver.findElement(By.xpath("//h2[text()='We hit a snag.']"));
+		System.out.println(errorTitle.getText());
+		List<WebElement> fieldLevelErrors = driver.findElements(By.xpath("//div[@class='fieldLevelErrors']/ul/li"));
+		for (WebElement webElement : fieldLevelErrors) {
+			System.out.println(webElement.getText());
+		}
 
 	}
 }

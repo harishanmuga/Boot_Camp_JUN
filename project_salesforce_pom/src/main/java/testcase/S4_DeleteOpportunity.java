@@ -1,5 +1,7 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -16,7 +18,7 @@ public class S4_DeleteOpportunity extends BaseClass {
 	}
 	
 	@Test(dataProvider="sendData")
-	public void deleteOpportunity(String app,String name) throws InterruptedException {
+	public void deleteOpportunity(String app,String name) throws InterruptedException, IOException {
 		
 		new LoginPage(driver).enterUsername().enterPassword().clickLogin()
 		.clickAppLauncher().clickViewAll()

@@ -1,5 +1,7 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -15,7 +17,7 @@ public class S121_SalesForceClassicNewEvent extends BaseClass{
 	}
 
 	@Test(dataProvider="sendData")
-	public void SalesForceClassicNewEvent(String subject, String name, String fileName) throws InterruptedException {
+	public void SalesForceClassicNewEvent(String subject, String name, String fileName) throws InterruptedException, IOException {
 		
 		new LoginPage(driver).enterUsername()
 		.enterPassword()

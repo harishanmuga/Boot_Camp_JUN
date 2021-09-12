@@ -1,5 +1,7 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -16,7 +18,7 @@ public class S3_EditOpportunity extends BaseClass {
 	}
 	
 	@Test(dataProvider = "sendData")
-	public void editOpportunity(String app, String name, String date, String stage, String status, String desc) throws InterruptedException {
+	public void editOpportunity(String app, String name, String date, String stage, String status, String desc) throws InterruptedException, IOException {
 		
 		new LoginPage(driver).enterUsername().enterPassword().clickLogin()
 		.clickAppLauncher()

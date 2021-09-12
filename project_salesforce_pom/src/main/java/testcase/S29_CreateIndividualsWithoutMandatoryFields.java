@@ -1,5 +1,7 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -9,7 +11,7 @@ import pages.LoginPage;
 public class S29_CreateIndividualsWithoutMandatoryFields extends BaseClass {
 	
 	@Test
-	public void CreateIndividualsWithoutMandatoryFields() throws InterruptedException {
+	public void CreateIndividualsWithoutMandatoryFields() throws InterruptedException, IOException {
 		
 		new LoginPage(driver).enterUsername().enterPassword()
 		.clickLogin()

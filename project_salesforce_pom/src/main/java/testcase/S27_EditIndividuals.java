@@ -1,5 +1,7 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -15,7 +17,7 @@ public class S27_EditIndividuals extends BaseClass {
 	}
 	
 	@Test(dataProvider="sendData")
-	public void editIndividuals(String name, String slt, String fName,String fullName) {
+	public void editIndividuals(String name, String slt, String fName,String fullName) throws IOException {
 		
 		new LoginPage(driver).enterUsername().enterPassword().clickLogin().clickAppLauncher()
 		.clickViewAll()

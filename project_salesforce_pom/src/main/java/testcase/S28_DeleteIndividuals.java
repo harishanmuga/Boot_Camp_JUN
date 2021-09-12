@@ -1,5 +1,7 @@
 package testcase;
 
+import java.io.IOException;
+
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -16,7 +18,7 @@ public class S28_DeleteIndividuals extends BaseClass {
 	}
 	
 	@Test(dataProvider="sendData")
-	public void DeleteIndividuals(String name) {
+	public void DeleteIndividuals(String name) throws IOException {
 		
 		new LoginPage(driver).enterUsername().enterPassword().clickLogin().clickAppLauncher()
 		.clickViewAll()
